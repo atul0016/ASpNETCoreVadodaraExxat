@@ -5,7 +5,7 @@ ASP.NET Core Runtime
 	- ASP.NET WebForms
 	- ASP.NET MVC
 	- Api
-# ============================================================================================================================
+ 
 The Project file for InProc Hosting
 
   <PropertyGroup>
@@ -14,7 +14,7 @@ The Project file for InProc Hosting
   <!--An Inprocess Hosting-->		
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
-#============================================================================================================================
+ 
   
 Program.cs to provide initial application dependency configuration
 
