@@ -81,13 +81,46 @@ The Startup.cs the Startup class
 
 The Database First Approach
 CLI Command
-dotnet ef scaffold <Connection-String> <Provider> -o Models -table <LIST of Tables to be scaffolded>
+dotnet ef scaffold "Connection-String" Provider -o Models -table <LIST of Tables to be scaffolded>
 Connection-String, the database connection string
 Provider, the database provider 
 
 The Code-First Approach
 1. Generate Migrations
-dotnet ef migrations add <Migration-name> -c <DBContext Class path>
-2. Update database
-dotnet ef update database -c <DBContext Class path>
+dotnet ef migrations add Migration-name -c DBContext Class path
 
+Example
+dotnet ef migrations add FirstMigration -c AspNetCoreApps.Models.ExStudentDbContext
+
+
+2. Update database
+dotnet ef  database update -c DBContext Class path
+
+example
+
+>dotnet ef database update -c AspNetCoreApps.Models.ExStudentDbContext
+
+The DbContext Class
+1. Class that used to map with Database over the connection string
+2. Class to Perform Transactions using  SaveChanges() / SaveChangesAsync() method
+3. Class used to map with Db Tables using Model/Entity classes with DbSet<T> class
+4. DbSet<T> class represents the Cursor to store all records from Table of name T that map with class name T
+
+
+
+
+In ASP.NET Core the DI Container have lifetime for objects as
+1. Transient --> Object will be created for each request and used only for a specific controller scope. 
+    When the controller is unloaded the object will also be disposed.
+services.AddTransient<T,U>();
+
+2. Scoped --> Object will be created for each new request and will be meintained for a session
+services.AddScoped<T,U>();
+
+3. Singleton --> Object will be created throught the lifecycle of the application.
+services.AddSingleton<T>();
+
+* Important
+// regiter the ExStudentDbContext in the Container
+            services.AddDbContext<ExStudentDbContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("AppConnString")));

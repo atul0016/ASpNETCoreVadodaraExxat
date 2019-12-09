@@ -10,6 +10,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using Microsoft.EntityFrameworkCore;
+using AspNetCoreApps.Models;
+
 namespace AspNetCoreApps
 {
     public class Startup
@@ -36,6 +39,10 @@ namespace AspNetCoreApps
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // regiter the ExStudentDbContext in the Container
+            services.AddDbContext<ExStudentDbContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("AppConnString")));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
