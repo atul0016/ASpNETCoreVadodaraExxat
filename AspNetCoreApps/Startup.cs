@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 
 using Microsoft.EntityFrameworkCore;
 using AspNetCoreApps.Models;
-
+using AspNetCoreApps.Services;
 namespace AspNetCoreApps
 {
     public class Startup
@@ -42,6 +42,12 @@ namespace AspNetCoreApps
             // regiter the ExStudentDbContext in the Container
             services.AddDbContext<ExStudentDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("AppConnString")));
+
+            // register the service classes 
+
+            services.AddScoped<IService<University, int>, UniversityService>();
+            services.AddScoped<IService<Student, int>, StudentService>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

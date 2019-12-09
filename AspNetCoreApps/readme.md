@@ -124,3 +124,13 @@ services.AddSingleton<T>();
 // regiter the ExStudentDbContext in the Container
             services.AddDbContext<ExStudentDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("AppConnString")));
+
+ApiController in ASP.NET Core
+1. HttpMethod Attributes
+    HttpGetAttribute, HttpPostAttribute, HttpPutAttribute, HttpDeleteAttribute
+2. IActionResult Contract
+    Used for Response from MVC Controllers as viewResulr, RedirectToActionResult,
+            FileResult, etc.
+    Used for Response from Api Controller
+        - OkResult, Ok(), OkObjectResult, the Ok(CLR Object to be Serialized)
+        - BadRequest(), NotFound(), NoContent(), 
