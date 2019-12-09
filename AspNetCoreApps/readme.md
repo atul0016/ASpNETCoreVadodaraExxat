@@ -71,3 +71,23 @@ The Startup.cs the Startup class
             app.UseMvc();
         }
     }
+
+
+    Using  EntityFramework Core aka EFCore for Data Access
+    1. Microsoft.EntityFrameworkCore
+    2. Microsoft.EntityFrameworkCore.Relational
+    3. Microsoft.EntityFrameworkCore.SqlServer
+    4.  Microsoft.EntityFrameworkCore.Tools
+
+The Database First Approach
+CLI Command
+dotnet ef scaffold <Connection-String> <Provider> -o Models -table <LIST of Tables to be scaffolded>
+Connection-String, the database connection string
+Provider, the database provider 
+
+The Code-First Approach
+1. Generate Migrations
+dotnet ef migrations add <Migration-name> -c <DBContext Class path>
+2. Update database
+dotnet ef update database -c <DBContext Class path>
+
