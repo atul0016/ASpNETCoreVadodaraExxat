@@ -7,7 +7,7 @@ namespace AspNetCoreApps.Services
 {
     public interface IService<TEntity,in TPk> where TEntity : class
     {
-        IEnumerable<Task<TEntity>> GetAsync();
+        Task<IEnumerable<TEntity>> GetAsync();
         Task<TEntity> GetAsync(TPk id);
         Task<TEntity> CreateAsync(TEntity entity);
         Task<TEntity> UpdateAsync(TPk id, TEntity entity);
