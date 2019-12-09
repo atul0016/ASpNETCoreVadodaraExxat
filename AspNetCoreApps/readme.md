@@ -15,7 +15,7 @@ The Project file for InProc Hosting
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 #============================================================================================================================
-
+  
 Program.cs to provide initial application dependency configuration
 
 The WebHosting Environment is created (Self-Host, IIS Express) WebHost uses the 'STartup' class to create default dependencies and object builder to
