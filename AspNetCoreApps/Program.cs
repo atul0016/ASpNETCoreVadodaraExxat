@@ -17,6 +17,10 @@ namespace AspNetCoreApps
             CreateWebHostBuilder(args).Build().Run();
         }
 
+        // The WebHosting Environment is created (Self-Host, IIS Express)
+        // Creates an instance of WebHost, create all default application Depenedencies 
+        // WebHost uses the 'STartup' class to create default dependencies and object builder to
+        // run and execute the application
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
