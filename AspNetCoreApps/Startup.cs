@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
+using AspNetCoreApps.CustomMiddleware;
 using Microsoft.EntityFrameworkCore;
 using AspNetCoreApps.Models;
 using AspNetCoreApps.Services;
@@ -67,7 +67,8 @@ namespace AspNetCoreApps
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            // register the custom middleware
+            app.UseCustomErrorHandlerMiddleware();
             app.UseMvc();
         }
     }

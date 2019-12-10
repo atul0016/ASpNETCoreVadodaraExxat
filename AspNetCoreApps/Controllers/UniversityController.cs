@@ -45,10 +45,12 @@ namespace AspNetCoreApps.Controllers
         [HttpPost]
         public async Task<IActionResult> PostAsync(University university)
         {
-            try
-            {
+            //try
+            //{
                 if (ModelState.IsValid)
                 {
+                    if (university.UniversityName.Length < 4)
+                        throw new Exception("UniversityName cannot be less than 4 characters");
                     var res = await service.CreateAsync(university);
                     return Ok(res);
                 }
@@ -56,11 +58,11 @@ namespace AspNetCoreApps.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, University university)
@@ -69,6 +71,8 @@ namespace AspNetCoreApps.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    if (university.UniversityName.Length < 4)
+                        throw new Exception("UniversityName cannot be less than 4 characters");
                     var res = await service.UpdateAsync(id,university);
                     return Ok(res);
                 }
